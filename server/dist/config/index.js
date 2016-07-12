@@ -11,7 +11,7 @@ var dbConfig = exports.dbConfig = {
 var emailConfig = exports.emailConfig = {
   service: 'Gmail',
   auth: {
-    user: 'dimitrimikadze@gmail.com',
-    pass: 'AgeraS1000'
+    user: 'reduxauth@gmail.com',
+    pass: 'd1m1tr111'
   }
 };
