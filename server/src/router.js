@@ -10,10 +10,10 @@ const requireSignin = passport.authenticate('local', { session: false });
 
 const router = (app) => {
   app.get('/', requireAuth, fetchUsers);
-  app.post('/signin', requireSignin, signin);
   app.post('/signup', signup);
   app.post('/signup/verify-email', verifiEmail);
   app.post('/resend-verify-code', resendVerification);
+  app.post('/signin', requireSignin, signin);
   app.post('/reset-password', resetPassword);
   app.post('/reset-password/verify', verifyResetPassword);
   app.post('/reset-password/new', resetPasswordNew);
