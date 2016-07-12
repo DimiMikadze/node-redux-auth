@@ -44,6 +44,7 @@ class ResetPasswordNew extends Component {
             <form onSubmit={handleSubmit(this.handleFormSubmit)}>
               <div className="input-group">
                 <input type="password" placeholder="new password" {...newpassword} />
+                { password.touched && <div className="form-error">{ password.error } </div> }
               </div>
               <div className="input-grup">
                 <input type="password" placeholder="repeat new password" {...renewpassword} />
@@ -71,6 +72,10 @@ function validate(props) {
       errors[prop] = `please enter a ${prop}`;
     }
   });
+
+  if(props.password && props.password.length < 6) {
+    errors.password = "minimum 6 characters";
+  }
 
   if(props.newpassword !== props.renewpassword) {
     errors.renewpassword = "passwords doesn't match";
