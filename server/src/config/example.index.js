@@ -10,3 +10,5 @@ export const emailConfig = {
     pass: 'Password',
   },
 };
+
+export const ROOT_URL = process.env.NODE_ENV === 'production' ? 'http://dimitrimikadze.com:3000' : 'http://localhost:3000';
