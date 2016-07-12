@@ -15,3 +15,5 @@ var emailConfig = exports.emailConfig = {
     pass: 'd1m1tr111'
   }
 };
+
+var ROOT_URL = exports.ROOT_URL = process.env.NODE_ENV === 'production' ? 'http://dimitrimikadze.com:3000' : 'http://localhost:3000';
