@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "nodemon --exec babel-node src/index.js",
     "build": "rm -rf dist && babel src --out-dir dist",
-    "start": "NODE_ENV=production PORT=3333 pm2 start dist/index.js",
+    "start": "NODE_ENV=production PORT=3333cs pm2 start dist/index.js",
     "lint": "eslint src"
   },
   "keywords": [

@@ -11,16 +11,7 @@ import routes from './routes';
 
 import './components/bundle.scss';
 
-const logger = store => next => action => {
-  console.group(action.type);
-  console.info('dispatching', action);
-  const result = next(action);
-  console.log('next state', store.getState());
-  console.groupEnd(action.type);
-  return result
-};
-
-const createStoreWithMiddleware = applyMiddleware(reduxThunk, logger)(createStore);
+const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers);
 
 const user = JSON.parse(localStorage.getItem('user'));
