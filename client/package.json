@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "webpack-dev-server --config ./webpack/webpack-dev.config.js --watch --colors",
     "build": "rm -rf dist && webpack --config ./webpack/webpack-prod.config.js --colors",
-    "start": "NODE_ENV=production PORT=8080 pm2 start ./server.js",
+    "start": "NODE_ENV=production PORT=3000 pm2 start ./server.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch",
     "lint": "eslint src test webpack"
