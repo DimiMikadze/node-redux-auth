@@ -2,7 +2,9 @@ import React from 'react';
 
 function Welcome() {
   return (
-    <div className="content">Welcome</div>
+    <div className="content">
+      <h1>Node Redux Auth</h1>
+    </div>
   )
 }
 

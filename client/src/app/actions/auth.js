@@ -76,6 +76,7 @@ export function signinUser(props) {
   return function (dispatch) {
     axios.post(`${API_URL}/signin`, { email, password })
       .then(response => {
+        console.log('RES', response.data);
         dispatch({ type: AUTH_USER });
 
         localStorage.setItem('user', JSON.stringify(response.data));

@@ -21,7 +21,7 @@ class Feature extends Component {
     return (
       <div className="content">
         <h1>Hello { this.user.firstname }</h1>
-        <p>Here are auth protected users firstnames! :)</p>
+        <p>Here are auth protected user firstnames! :)</p>
         { this.renderUsers() }
       </div>
     )
