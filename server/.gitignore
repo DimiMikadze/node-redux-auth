@@ -1,5 +1,5 @@
 /node_modules
 /.idea
-/src/config/index
+/src/config/index.js
 .DS_Store
 npm-debug.log
