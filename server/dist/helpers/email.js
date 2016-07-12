@@ -18,7 +18,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var transporter = _nodemailer2.default.createTransport(_config.emailConfig);
 
-var from = 'dimitrimikadze@gmail.com';
+var from = 'reduxauth@gmail.com';
 
 function sendVerificationEmail(email, firstName, token) {
   var html = "<div style='margin: 0; padding: 0; width: 100%; font-family: Trebuchet MS, sans-serif;'>" + "<div style='background-color: #f2f2f2; padding: 45px;'>" + "<div style='background-color: #ffffff; padding: 40px; text-align: center;'>" + "<h1 style='color: #5f5f5f; margin-bottom: 30px;'>Hi, " + firstName + "</h1>" + "<p style='color: #5f5f5f;'>Click the big button below to activate your account.</p>" + "<a href='http://localhost:3000/verify-email/?email=" + email + "&token=" + token + "' style='background-color: #288feb; color: #fff; padding: 14px; text-decoration: none; border-radius: 5px; margin-top: 20px; display: inline-block;'>Activate Account</a>" + "</div> <h3 style='color: #5f5f5f; text-align: center; margin-top: 30px;'>Redux Auth Team</h3></div></div>";

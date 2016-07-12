@@ -3,7 +3,7 @@ import nodemailer from 'nodemailer';
 import { emailConfig } from '../config';
 const transporter = nodemailer.createTransport(emailConfig);
 
-const from = 'dimitrimikadze@gmail.com';
+const from = 'reduxauth@gmail.com';
 
 export function sendVerificationEmail(email, firstName, token) {
   const html = "<div style='margin: 0; padding: 0; width: 100%; font-family: Trebuchet MS, sans-serif;'>" +
