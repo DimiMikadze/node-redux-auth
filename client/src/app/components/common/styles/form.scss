@@ -1,0 +1,86 @@
+.input-group {
+  margin-bottom: 14px;
+}
+
+input[type='text'], input[type='password'] {
+  border-radius: 5px;
+  border: 1px solid $gray;
+  height: 40px;
+  width: 98%;
+  padding-left: 2%;
+
+  &:focus {
+    border: 1px solid $blue;
+  }
+}
+
+.has-error {
+  input[type='text'], input[type='password'] {
+    border: 1px solid $red;
+  }
+}
+
+.btn {
+  width: 100%;
+  height: 40px;
+  background-color: $green;
+  color: $white;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  font-weight: 500;
+  font-size: 18px;
+
+  &:hover {
+    background-color: darken($green, 5);
+  }
+}
+
+.form-bottom {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 20px;
+  display: block;
+
+  p {
+    margin-bottom: 8px;
+  }
+
+  a {
+    color: $blue;
+
+    &:hover {
+      text-decoration: underline !important;
+    }
+  }
+}
+
+.form-error {
+  color: $red;
+}
+
+.error-container {
+  background-color: $red;
+  color: $white;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  overflow: hidden;
+
+  &.signin-error {
+    margin-top: 44px;
+  }
+}
+
+.password-forgot {
+  float: right;
+  font-size: 14px;
+  color: $blue;
+  width: 100%;
+  text-align: right;
+
+  &:hover {
+    text-decoration: underline !important;
+  }
+}

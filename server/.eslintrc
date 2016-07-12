@@ -1,0 +1,12 @@
+{
+  "extends": "airbnb",
+  "rules": {
+    "consistent-return": 0,
+    "no-shadow": 0,
+    "no-console": 0,
+    "no-unused-vars": 0,
+    "func-names": 0,
+    "max-len": 0,
+    "quotes": 0,
+  }
+}

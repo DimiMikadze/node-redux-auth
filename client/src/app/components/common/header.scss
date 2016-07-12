@@ -1,0 +1,35 @@
+header {
+  height: 70px;
+  line-height: 70px;
+  background-color: $white;
+  border-bottom: 1px solid $gray;
+
+  .logo {
+    color: $blue;
+    margin-left: 20px;
+  }
+
+  nav {
+    float: right;
+
+    ul {
+      margin: 0;
+      padding: 0;
+      float: right;
+      margin-right: 20px;
+
+      li {
+        display: inline-block;
+        margin-left: 20px;
+
+        a {
+          color: $light-black;
+
+          &:hover {
+            color: $blue;
+          }
+        }
+      }
+    }
+  }
+}

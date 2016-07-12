@@ -1,0 +1,7 @@
+{
+  "extends": "airbnb",
+  "rules": {
+    "func-names": 0,
+    "semi": 0,
+  }
+}
