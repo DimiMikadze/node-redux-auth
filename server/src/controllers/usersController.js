@@ -1,10 +1,10 @@
 import User from '../models/user';
 
 /**
- * List all users
+ * Fetch user firstnames
  */
 export const fetchUsers = (req, res, next) => {
-  User.find({}, (err, users) => {
+  User.find({}, 'firstname', (err, users) => {
     if (err) { return next(err); }
 
     res.json(users);

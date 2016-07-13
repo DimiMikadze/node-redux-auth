@@ -12,10 +12,10 @@ var _user2 = _interopRequireDefault(_user);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
- * List all users
+ * Fetch user firstnames
  */
 var fetchUsers = exports.fetchUsers = function fetchUsers(req, res, next) {
-  _user2.default.find({}, function (err, users) {
+  _user2.default.find({}, 'firstname', function (err, users) {
     if (err) {
       return next(err);
     }
