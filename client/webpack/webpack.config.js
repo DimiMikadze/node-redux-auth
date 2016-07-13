@@ -73,6 +73,7 @@ module.exports = (options) => {
       inline: true,
       progress: true,
       historyApiFallback: true,
+      stats: 'errors-only',
     };
   }
 

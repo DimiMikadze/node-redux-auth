@@ -2,9 +2,7 @@ import passport from 'passport';
 import User from '../models/user';
 import { dbConfig } from '../config';
 import LocalStrategy from 'passport-local';
-
-const JwtStrategy = require('passport-jwt').Strategy;
-const ExtractJwt = require('passport-jwt').ExtractJwt;
+import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';
 
 const localOptions = { usernameField: 'email' };
 const localLogin = new LocalStrategy(localOptions, (email, password, done) => {
