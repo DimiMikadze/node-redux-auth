@@ -14,9 +14,11 @@ var _resetPasswordController = require('./controllers/resetPasswordController');
 
 var _usersController = require('./controllers/usersController');
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _passport3 = require('./services/passport');
 
-var passportService = require('./services/passport');
+var _passport4 = _interopRequireDefault(_passport3);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var requireAuth = _passport2.default.authenticate('jwt', { session: false });
 var requireSignin = _passport2.default.authenticate('local', { session: false });

@@ -14,10 +14,9 @@ var _passportLocal = require('passport-local');
 
 var _passportLocal2 = _interopRequireDefault(_passportLocal);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _passportJwt = require('passport-jwt');
 
-var JwtStrategy = require('passport-jwt').Strategy;
-var ExtractJwt = require('passport-jwt').ExtractJwt;
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var localOptions = { usernameField: 'email' };
 var localLogin = new _passportLocal2.default(localOptions, function (email, password, done) {
@@ -49,11 +48,11 @@ var localLogin = new _passportLocal2.default(localOptions, function (email, pass
 });
 
 var jwtOptions = {
-  jwtFromRequest: ExtractJwt.fromHeader('authorization'),
+  jwtFromRequest: _passportJwt.ExtractJwt.fromHeader('authorization'),
   secretOrKey: _config.dbConfig.secret
 };
 
-var jwtLogin = new JwtStrategy(jwtOptions, function (payload, done) {
+var jwtLogin = new _passportJwt.Strategy(jwtOptions, function (payload, done) {
   _user2.default.findById(payload.sub, function (err, user) {
     if (err) {
       return done(err, false);
