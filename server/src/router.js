@@ -2,8 +2,7 @@ import passport from 'passport';
 import { signin, signup, verifiEmail, resendVerification } from './controllers/authController';
 import { resetPassword, verifyResetPassword, resetPasswordNew } from './controllers/resetPasswordController';
 import { fetchUsers } from './controllers/usersController';
-
-const passportService = require('./services/passport');
+import passportService from './services/passport';
 
 const requireAuth = passport.authenticate('jwt', { session: false });
 const requireSignin = passport.authenticate('local', { session: false });
