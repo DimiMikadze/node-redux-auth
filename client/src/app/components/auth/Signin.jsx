@@ -30,7 +30,7 @@ class Signin extends Component {
             { password.touched && <div className="form-error">{ password.error }</div> }
           </div>
           <div className="password-forgot">
-            <Link to="reset-password">I forgot my password</Link>
+            <Link to="/reduxauth/reset-password">I forgot my password</Link>
           </div>
           {
             this.props.errorMessage && this.props.errorMessage.signin &&
@@ -39,7 +39,7 @@ class Signin extends Component {
           <button type="submit" className="btn">Sign in</button>
           <div className="form-bottom">
             <p>Don't have an account?</p>
-            <Link to="/signup">Click here to sign up</Link>
+            <Link to="/reduxauth/signup">Click here to sign up</Link>
           </div>
         </form>
       </div>

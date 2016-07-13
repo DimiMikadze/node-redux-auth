@@ -37,7 +37,7 @@ class ResetPasswordNew extends Component {
               <h3>{ this.props.errorMessage.verifyResetPassword.message }</h3>
               {
                 this.props.errorMessage.verifyResetPassword.resend &&
-                  <Link className="resend" to="/reset-password">Reset Password Again</Link>
+                  <Link className="resend" to="/reduxauth/reset-password">Reset Password Again</Link>
               }
             </div>
             :

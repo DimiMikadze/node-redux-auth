@@ -30,7 +30,7 @@ export function signupUser(props) {
       .then(() => {
         dispatch({ type: SIGNUP_SUCCESS });
 
-        browserHistory.push(`/signup/verify-email?email=${props.email}`);
+        browserHistory.push(`/reduxauth/signup/verify-email?email=${props.email}`);
       })
       .catch(response => dispatch(authError(SIGNUP_FAILURE, response.data.error)));
   }
@@ -57,11 +57,11 @@ export function verifyEmail(props) {
   return function (dispatch) {
     axios.post(`${API_URL}/signup/verify-email`, props)
       .then(response => {
-        dispatch({ type: AUTH_USER });
-
         localStorage.setItem('user', JSON.stringify(response.data));
 
-        browserHistory.push('/users');
+        dispatch({ type: AUTH_USER });
+
+        browserHistory.push('/reduxauth/users');
       })
       .catch(response => dispatch(authError(VERIFY_EMAIL_ERROR, response.data.error)));
   }
@@ -76,12 +76,11 @@ export function signinUser(props) {
   return function (dispatch) {
     axios.post(`${API_URL}/signin`, { email, password })
       .then(response => {
-        console.log('RES', response.data);
-        dispatch({ type: AUTH_USER });
-
         localStorage.setItem('user', JSON.stringify(response.data));
 
-        browserHistory.push('/users');
+        dispatch({ type: AUTH_USER });
+
+        browserHistory.push('/reduxauth/users');
       })
       .catch(() => dispatch(authError(SIGNIN_FAILURE, "Email or password isn't right")));
   }

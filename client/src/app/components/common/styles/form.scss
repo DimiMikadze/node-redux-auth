@@ -80,7 +80,11 @@ input[type='text'], input[type='password'] {
   width: 100%;
   text-align: right;
 
-  &:hover {
-    text-decoration: underline !important;
+  a {
+    color: $blue;
+
+    &:hover {
+      text-decoration: underline !important;
+    }
   }
 }

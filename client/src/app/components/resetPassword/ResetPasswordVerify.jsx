@@ -14,7 +14,7 @@ class ResetPasswordVerify extends Component {
     this.email = this.props.location.query.email;
 
     if(!this.props.resetPasswordProgress || !this.email) {
-      browserHistory.push('/');
+      browserHistory.push('/reduxauth/signup');
     }
   }
 

@@ -6,25 +6,25 @@ class Header extends Component {
   render() {
     return (
       <header>
-        <Link to="/" className="logo">Redux Auth</Link>
+        <Link to={this.props.authenticated ? '/reduxauth/users' : '/reduxauth'} className="logo">Redux Auth</Link>
           <nav>
             {
               this.props.authenticated ?
                 <ul>
                   <li>
-                    <Link to="/users">Users</Link>
+                    <Link to="/reduxauth/users">Users</Link>
                   </li>
                   <li>
-                    <Link to="/signout">Signout</Link>
+                    <Link to="/reduxauth/signout">Signout</Link>
                   </li>
                 </ul>
                 :
                 <ul>
                   <li>
-                    <Link to="/signin">Sign in</Link>
+                    <Link to="/reduxauth/signin">Sign in</Link>
                   </li>
                   <li>
-                    <Link to="/signup">Sign up</Link>
+                    <Link to="/reduxauth/signup">Sign up</Link>
                   </li>
                 </ul>
             }

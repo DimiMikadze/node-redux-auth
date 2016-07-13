@@ -2,12 +2,14 @@
 
 ## Features
 
+- Signin, Signup, Email verification, Password reset
+- Client side forms validation
 - Node/Express rest api
-- client side form validation
-- Email verification
-- Password reset
+- Nodemailer configuration, Email templates
 - Webpack configuration for server and client
 - Linting with Airbnb eslint configuration
+
+# [Live Demo](http://dimitrimikadze.com:3000/reduxauth)
 
 ## Getting Started
 
@@ -17,7 +19,7 @@ Clone Repo
 git clone https://github.com/DimitriMikadze/node-redux-auth.git
 ````
 
-## Server
+# Server
 
 npm install dependencies
 
@@ -27,9 +29,9 @@ cd node-redux-auth/server
 npm install
 ````
 
-Create config index.js file inside src/config folder.
+Create index.js file inside src/config folder.
 
-example:
+example index.js:
 
 ````
 export const dbConfig = {
@@ -40,10 +42,12 @@ export const dbConfig = {
 export const emailConfig = {
   service: 'Gmail',
   auth: {
-    user: 'email@gmail.com',
+    user: 'reduxauth@gmail.com',
     pass: 'Password',
   },
 };
+
+export const ROOT_URL = process.env.NODE_ENV === 'production' ? 'http://dimitrimikadze.com:3000' : 'http://localhost:3000';
 
 ````
 
@@ -62,7 +66,7 @@ Commands
 |`npm run build`| build the application to `./dist`|
 |`npm start`| Start production server with pm2 from `./dist`|
 
-## Client
+# Client
 
 npm install dependencies
 
