@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
 import App from './components/App';
-import Users from './components/Users';
+import UserList from './components/users/UserList';
 import Signin from './components/auth/Signin';
 import Signout from './components/auth/Signout';
 import Signup from './components/auth/Signup';
@@ -26,6 +26,6 @@ export default (
     <Route path="reset-password" component={requireNotAuth(ResetPassword)} />
     <Route path="reset-password/verify" component={ResetPasswordVerify} />
     <Route path="reset-password/new" component={requireNotAuth(ResetPasswordNew)} />
-    <Route path="users" component={requireAuth(Users)} />
+    <Route path="users" component={requireAuth(UserList)} />
   </Route>
 )

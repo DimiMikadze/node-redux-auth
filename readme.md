@@ -7,6 +7,7 @@
 - Node/Express rest api
 - Nodemailer configuration, Email templates
 - Webpack configuration for server and client
+- SCSS configuration
 - Linting with Airbnb eslint configuration
 
 # [Live Demo](http://dimitrimikadze.com:3000/reduxauth)

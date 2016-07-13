@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import * as actions from '../actions/users';
+import * as actions from '../../actions/users';
 import { connect } from 'react-redux';
 
 class Feature extends Component {
@@ -19,10 +19,12 @@ class Feature extends Component {
 
   render() {
     return (
-      <div className="content">
+      <div className="content users">
         <h1>Hello { this.user.firstname }</h1>
         <p>Here are auth protected user firstnames! :)</p>
-        { this.renderUsers() }
+        <ul>
+          { this.renderUsers() }
+        </ul>
       </div>
     )
   }
