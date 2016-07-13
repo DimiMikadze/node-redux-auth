@@ -11,6 +11,10 @@
 
 # [Live Demo](http://dimitrimikadze.com:3000/reduxauth)
 
+## Screenshot
+
+![Screenshot](/client/static/images/screenshot.png)
+
 ## Getting Started
 
 Clone Repo
