@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
-import { reduxForm } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 import * as actions from '../../actions/resetPassword';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
+
+const renderField = ({ input, type, placeholder, meta: { touched, error } }) => (
+  <div className={`input-group ${touched && error ? 'has-error' : ''}`}>
+    <input type={type} placeholder={placeholder} {...input} />
+    { touched && error && <div className="form-error">{error}</div> }
+  </div>
+);
 
 class ResetPasswordNew extends Component {
   constructor(props) {
@@ -26,12 +34,13 @@ class ResetPasswordNew extends Component {
   }
 
   render() {
-    const { handleSubmit, fields: { newpassword, renewpassword } } = this.props;
+    const { handleSubmit } = this.props;
 
     return (
       <div className="form-container">
         <h1>Reset Password</h1>
         {
+          /* Landing error message */
           this.props.errorMessage && this.props.errorMessage.verifyResetPassword ?
             <div className="content">
               <h3>{ this.props.errorMessage.verifyResetPassword.message }</h3>
@@ -41,21 +50,21 @@ class ResetPasswordNew extends Component {
               }
             </div>
             :
+            /* New password form */
             <form onSubmit={handleSubmit(this.handleFormSubmit)}>
-              <div className="input-group">
-                <input type="password" placeholder="new password" {...newpassword} />
-                { newpassword.touched && <div className="form-error">{ newpassword.error } </div> }
-              </div>
-              <div className="input-grup">
-                <input type="password" placeholder="repeat new password" {...renewpassword} />
-                <div>
-                  { renewpassword.touched && <div className="form-error">{ renewpassword.error } </div> }
-                </div>
-              </div>
+              {/* New password */}
+              <Field name="newpassword" component={renderField} type="password" placeholder="New password" />
+
+              {/* Repeat new password */}
+              <Field name="renewpassword" component={renderField} type="password" placeholder="Repeat New password" />
+
               {
+                /* Server error message */
                 this.props.errorMessage && this.props.errorMessage.verifyResetPassword &&
                   <div className="error-container">{ this.props.errorMessage.verifyResetPassword.message }</div>
               }
+
+              {/* Submit button */}
               <button type="submit" className="btn">Submit</button>
             </form>
          }
@@ -66,10 +75,11 @@ class ResetPasswordNew extends Component {
 
 function validate(props) {
   const errors = {};
+  const fields = ['newpassword', 'renewpassword'];
 
-  Object.keys(props).map(prop => {
-    if(!props[prop]) {
-      errors[prop] = `please enter a ${prop}`;
+  fields.forEach((f) => {
+    if(!(f in props)) {
+      errors[f] = `${f} is required`;
     }
   });
 
@@ -88,8 +98,6 @@ function mapStateToProps(state) {
   return { errorMessage: state.resetPass.error };
 }
 
-export default reduxForm({
-  form: 'resetnewpassword',
-  fields: ['newpassword', 'renewpassword'],
-  validate
-}, mapStateToProps, actions)(ResetPasswordNew);
+ResetPasswordNew = reduxForm({ form: 'resetnewpassword', validate })(ResetPasswordNew);
+
+export default connect(mapStateToProps, actions)(ResetPasswordNew);

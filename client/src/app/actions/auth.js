@@ -37,6 +37,26 @@ export function signupUser(props) {
 }
 
 /**
+ * Sign in
+ */
+export function signinUser(props) {
+  const { email, password } = props;
+
+  return function (dispatch) {
+    axios.post(`${API_URL}/signin`, { email, password })
+      .then(response => {
+        localStorage.setItem('user', JSON.stringify(response.data));
+
+        dispatch({ type: AUTH_USER });
+
+        browserHistory.push('/reduxauth/users');
+      })
+      .catch(() => dispatch(authError(SIGNIN_FAILURE, "Email or password isn't right")));
+  }
+}
+
+
+/**
  * Resend verification code
  */
 export function resendVerification(props) {
@@ -64,25 +84,6 @@ export function verifyEmail(props) {
         browserHistory.push('/reduxauth/users');
       })
       .catch(response => dispatch(authError(VERIFY_EMAIL_ERROR, response.data.error)));
-  }
-}
-
-/**
- * Sign in
- */
-export function signinUser(props) {
-  const { email, password } = props;
-
-  return function (dispatch) {
-    axios.post(`${API_URL}/signin`, { email, password })
-      .then(response => {
-        localStorage.setItem('user', JSON.stringify(response.data));
-
-        dispatch({ type: AUTH_USER });
-
-        browserHistory.push('/reduxauth/users');
-      })
-      .catch(() => dispatch(authError(SIGNIN_FAILURE, "Email or password isn't right")));
   }
 }
 

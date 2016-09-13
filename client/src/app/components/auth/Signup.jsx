@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
-import { reduxForm } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 import * as actions from '../../actions/auth';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
+
+const renderField = ({ input, type, placeholder, meta: { touched, error } }) => (
+  <div className={`input-group ${touched && error ? 'has-error' : ''}`}>
+    <input type={type} placeholder={placeholder} {...input} />
+    { touched && error && <div className="form-error">{error}</div> }
+  </div>
+);
 
 class Signup extends Component {
   constructor(props) {
@@ -15,39 +23,38 @@ class Signup extends Component {
   }
 
   render() {
-    const { handleSubmit, fields: { firstname, lastname, email, password, repassword } } = this.props;
+    const { handleSubmit } = this.props;
 
     return (
       <div className="form-container">
         <h1>Sign up</h1>
         <form onSubmit={handleSubmit(this.handleFormSubmit)}>
-          <div className={`input-group ${firstname.touched && firstname.error ? 'has-error' : ''}`}>
-            <input type="text" placeholder="First name" {...firstname} />
-            { firstname.touched && <div className="form-error">{firstname.error}</div> }
-          </div>
-          <div className={`input-group ${lastname.touched && lastname.error ? 'has-error' : ''}`}>
-            <input type="text" placeholder="Last name" {...lastname} />
-            { lastname.touched && <div className="form-error">{lastname.error}</div> }
-          </div>
-          <div className={`input-group ${email.touched && email.error ? 'has-error' : ''}`}>
-            <input type="text" placeholder="email" {...email} />
-            { email.touched && <div className="form-error">{email.error}</div> }
-          </div>
-          <div className={`input-group ${password.touched && password.error ? 'has-error' : ''}`}>
-            <input type="password" placeholder="password" {...password} />
-            { password.touched && <div className="form-error">{password.error}</div> }
-          </div>
-          <div className={`input-group ${repassword.touched && repassword.error ? 'has-error' : ''}`}>
-            <input type="password" placeholder="repeat password" {...repassword} />
-            { repassword.touched && <div className="form-error">{repassword.error}</div> }
-          </div>
+
+          {/* Firstname */}
+          <Field name="firstname" component={renderField} type="text" placeholder="First name" />
+
+          {/* Lastname */}
+          <Field name="lastname" component={renderField} type="text" placeholder="Last name" />
+
+          {/* Email */}
+          <Field name="email" component={renderField} type="text" placeholder="Email" />
+
+          {/* Password */}
+          <Field name="password" component={renderField} type="password" placeholder="Password" />
+
+          {/* Email */}
+          <Field name="repassword" component={renderField} type="password" placeholder="Repeat Password" />
+
+          {/* Server error message */}
           <div>
-            {
-              this.props.errorMessage && this.props.errorMessage.signup &&
-                <div className="error-container">Oops! { this.props.errorMessage.signup }</div>
-            }
+            { this.props.errorMessage && this.props.errorMessage.signup &&
+                <div className="error-container">Oops! { this.props.errorMessage.signup }</div> }
           </div>
+
+          {/* Submit button */}
           <button type="submit" className="btn">Sign up</button>
+
+          {/* Sign in button */}
           <div className="form-bottom">
             <p>Already signed up?</p>
             <Link to="/reduxauth/signin">Click here to sign in</Link>
@@ -58,12 +65,13 @@ class Signup extends Component {
   }
 }
 
-function validate(props) {
+const validate = props => {
   const errors = {};
+  const fields = ['firstname', 'lastname', 'email', 'password', 'repassword'];
 
-  Object.keys(props).map(prop => {
-    if(!props[prop]) {
-      errors[prop] = `please enter a ${prop}`;
+  fields.forEach((f) => {
+    if(!(f in props)) {
+      errors[f] = `${f} is required`;
     }
   });
 
@@ -96,14 +104,13 @@ function validate(props) {
   }
 
   return errors;
-}
+};
+
 
 function mapStateToProps(state) {
   return { errorMessage: state.auth.error };
 }
 
-export default reduxForm({
-  form: 'signup',
-  fields: ['firstname', 'lastname', 'email', 'password', 'repassword'],
-  validate
-}, mapStateToProps, actions)(Signup);
+Signup = reduxForm({ form: 'signup', validate })(Signup);
+
+export default connect(mapStateToProps, actions)(Signup);

@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
-import { reduxForm } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 import * as actions from '../../actions/auth';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
+
+const renderField = ({ input, type, placeholder, meta: { touched, error } }) => (
+  <div className={`input-group ${touched && error ? 'has-error' : ''}`}>
+    <input type={type} placeholder={placeholder} {...input} />
+    { touched && error && <div className="form-error">{error}</div> }
+  </div>
+);
 
 class Signin extends Component {
   constructor(props) {
@@ -15,28 +23,32 @@ class Signin extends Component {
   }
 
   render() {
-    const { handleSubmit, fields: { email, password } } = this.props;
+    const { handleSubmit } = this.props;
 
     return (
       <div className="form-container">
         <h1>Sign in</h1>
         <form onSubmit={handleSubmit(this.handleFormSubmit)}>
-          <div className={`input-group ${email.touched && email.error ? 'has-error' : ''}`}>
-            <input type="text" placeholder="email" {...email} />
-            { email.touched && <div className="form-error">{ email.error }</div> }
-          </div>
-          <div className="input-group">
-            <input type="password" placeholder="password" {...password} />
-            { password.touched && <div className="form-error">{ password.error }</div> }
-          </div>
+
+          {/* Email */}
+          <Field name="email" component={renderField} type="text" placeholder="Email" />
+
+          {/* Password */}
+          <Field name="password" component={renderField} type="password" placeholder="Password" />
+
+          {/* Forgot password */}
           <div className="password-forgot">
             <Link to="/reduxauth/reset-password">I forgot my password</Link>
           </div>
-          {
-            this.props.errorMessage && this.props.errorMessage.signin &&
-              <div className="error-container signin-error">Oops! { this.props.errorMessage.signin }</div>
-          }
+
+          {/* Server error message */}
+          { this.props.errorMessage && this.props.errorMessage.signin &&
+              <div className="error-container signin-error">Oops! { this.props.errorMessage.signin }</div> }
+
+          {/* Signin button */}
           <button type="submit" className="btn">Sign in</button>
+
+          {/* Signup button */}
           <div className="form-bottom">
             <p>Don't have an account?</p>
             <Link to="/reduxauth/signup">Click here to sign up</Link>
@@ -65,8 +77,6 @@ function mapStateToProps(state) {
   return { errorMessage: state.auth.error }
 }
 
-export default reduxForm({
-  form: 'signin',
-  fields: ['email', 'password'],
-  validate
-}, mapStateToProps, actions)(Signin);
+Signin = reduxForm({ form: 'signin', validate })(Signin);
+
+export default connect(mapStateToProps, actions)(Signin);
