@@ -10,8 +10,6 @@
 - SCSS configuration
 - Linting with Airbnb eslint configuration
 
-# [Live Demo](http://dimitrimikadze.com:3000/reduxauth)
-
 ## Screenshot
 
 ![Screenshot](/client/static/images/screenshot.png)
@@ -21,7 +19,7 @@
 Clone Repo
 
 ````
-git clone https://github.com/DimitriMikadze/node-redux-auth.git
+git clone https://github.com/DimiMikadze/node-redux-auth.git
 ````
 
 # Server
@@ -52,7 +50,7 @@ export const emailConfig = {
   },
 };
 
-export const ROOT_URL = process.env.NODE_ENV === 'production' ? 'http://dimitrimikadze.com:3000' : 'http://localhost:3000';
+export const ROOT_URL = process.env.NODE_ENV === 'production' ? 'http://dimimikadze.com:3000' : 'http://localhost:3000';
 
 ````
 
