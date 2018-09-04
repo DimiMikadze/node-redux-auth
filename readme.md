@@ -60,15 +60,6 @@ Start Mongodb
 mongod
 ````
 
-Commands
---------
-
-|Script|Description|
-|---|---|
-|`npm run dev`| Run development server |
-|`npm run build`| build the application to `./dist`|
-|`npm start`| Start production server with pm2 from `./dist`|
-
 # Client
 
 npm install dependencies
@@ -82,9 +73,16 @@ npm install
 Commands
 --------
 
+Open the terminal and go to the folder server/ and run `npm run dev`. The server is gonna start and listen in the port 3333.
+
+Open a new terminal and go to the folder client/ and run `npm dev`. The client is gonna start and listen in the port 3000.
+
+The client is reachable on `localhost:3000/reduxauth`.
+
 |Script|Description|
 |---|---|
 |`npm run dev`| Run development server |
+|`npm dev`| Run development client |
 |`npm run build`| build the application to `./dist`|
 |`npm start`| Start production server with pm2 from `./dist`|
 
